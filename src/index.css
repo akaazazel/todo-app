@@ -2,182 +2,24 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: "Inter", Arial, sans-serif;
-    background: #fafafa;
-    color: #111;
-    line-height: 1.6;
-    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .wrapper {
-    max-width: 700px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 30px;
-    border: 1px solid #e5e7eb;
-    border-radius: 0; /* sharp corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
+
+.todo-list-container {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    transition: box-shadow 0.3s ease;
-}
-
-.wrapper:hover {
-    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
-}
-
-.app-title {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 25px;
-    text-align: left;
-    color: #111;
-    letter-spacing: -0.5px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.task-list {
-    width: 100%;
-}
-
-.no-tasks {
-    text-align: center;
-    color: #888;
-    font-size: 16px;
-    margin-top: 25px;
-    font-style: italic;
-}
-
-.single-task {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-    border-bottom: 1px solid #e5e7eb;
-    transition: background 0.2s ease;
-}
-
-.single-task:hover {
-    background: #f9f9f9;
-}
-
-.task-info {
-    display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-.single-task input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: #111;
-    cursor: pointer;
-    transition: transform 0.15s ease;
+.single-todo-box {
+    border: 1px solid black;
+    padding: 10px;
 }
 
-.single-task input[type="checkbox"]:hover {
-    transform: scale(1.05);
-}
-
-.single-task p {
-    flex: 1;
-    margin-left: 12px;
-    font-size: 17px;
-    font-weight: 400;
-    color: #222;
-    transition: color 0.25s ease;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.buttons button {
-    padding: 8px 14px;
-    color: #fff;
-    border-radius: 0;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.25s ease, color 0.25s ease;
-}
-
-.buttons .delete-button {
-    border: 1px solid #e11d48;
-    background: #e11d48;
-    &:hover {
-        background: #fff;
-        color: #e11d48;
-    }
-}
-.buttons .edit-button {
-    border: 1px solid #1d82e1;
-    background: #1d82e1;
-    &:hover {
-        background: #fff;
-        color: #1d82e1;
-    }
-}
-
-.checked p {
+.crossed {
     text-decoration: line-through;
-    color: #888;
-}
-
-/* 🔽 Responsive Styles */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    .wrapper {
-        padding: 20px;
-    }
-
-    .app-title {
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .task-input {
-        flex-direction: column;
-    }
-
-    .task-input input,
-    .task-input button {
-        width: 100%;
-        font-size: 15px;
-    }
-
-    .task-input button {
-        padding: 12px;
-    }
-
-    .single-task {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .single-task p {
-        font-size: 15px;
-        margin-left: 0;
-    }
-
-    .single-task button {
-        align-self: flex-end;
-        padding: 6px 12px;
-        font-size: 13px;
-        
-    }
 }

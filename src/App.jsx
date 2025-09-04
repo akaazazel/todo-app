@@ -1,18 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import TaskInput from "./components/TaskInput";
-import TaskList from "./components/TaskList";
-import AddNewTask from "./components/AddNewTask";
-import {
-    addTodo,
-    removeTodo,
-    doneToggle,
-    editTodo,
-    Todo,
-} from "./todo_function";
+import TodoListContainer from "./components/TodoListContainer";
+import AddNewTodo from "./components/AddNewTodo";
+import TodoInput from "./components/TodoInput";
+
+import { Todo } from "./todo_function";
 
 function App() {
-    const [tasksList, setTasksList] = useState([
+    const testData = [
         new Todo({
             todo_id: "mf5adwv45qg24dh1",
             title: "Wash dishes",
@@ -27,28 +22,22 @@ function App() {
             date_created: new Date(),
             is_done: false,
         }),
-    ]);
+    ];
 
-    const [inputBoxHidden, setInputBoxHidden] = useState(true);
+    const [todosList, setTodosList] = useState(testData);
 
     return (
         <div className="wrapper">
             <header>
                 <h1 className="app-title">To Do App</h1>
-                <AddNewTask
-                    inputBoxHidden={inputBoxHidden}
-                    setInputBoxHidden={setInputBoxHidden}
-                />
+                <AddNewTodo />
             </header>
             <section>
-                {!inputBoxHidden && (
-                    <TaskInput
-                        tasksList={tasksList}
-                        setTasksList={setTasksList}
-                        setInputBoxHidden={setInputBoxHidden}
-                    />
-                )}
-                <TaskList tasksList={tasksList} setTasksList={setTasksList} />
+                <TodoInput />
+                <TodoListContainer
+                    todosList={todosList}
+                    setTodosList={setTodosList}
+                />
             </section>
         </div>
     );
