@@ -1,13 +1,30 @@
 import React from "react";
 import { doneToggle } from "../todo_function";
 
-const SingleTodo = ({ todo, todosList, setTodosList }) => {
+const SingleTodo = ({
+    todo,
+    todosList,
+    setTodosList,
+    editingState,
+    setEditingState,
+    setTitle,
+    setDescription,
+    setDate,
+    setIsDone,
+}) => {
     const handleDate = (date) => {
         return date.toDateString();
     };
 
     const handleTodoToggle = () => {
         setTodosList(doneToggle(todosList, todo.todo_id));
+    };
+
+    const handleEditing = () => {
+        setEditingState(true);
+        setTitle(todo.title);
+        setDescription(todo.description);
+        setDate(todo.date_created.toISOString().split("T")[0]);
     };
 
     return (
@@ -27,7 +44,7 @@ const SingleTodo = ({ todo, todosList, setTodosList }) => {
                 <p>{handleDate(todo.date_created)}</p>
             </div>
             <div className="action-buttons">
-                <button>Edit</button>
+                <button onClick={() => handleEditing()}>Edit</button>
                 <button>Delete</button>
             </div>
         </div>

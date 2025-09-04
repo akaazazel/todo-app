@@ -1,7 +1,16 @@
 import React from "react";
 import SingleTodo from "./SingleTodo";
 
-const TodoListContainer = ({ todosList, setTodosList }) => {
+const TodoListContainer = ({
+    todosList,
+    setTodosList,
+    editingState,
+    setEditingState,
+    setTitle,
+    setDescription,
+    setDate,
+    setIsDone,
+}) => {
     return (
         <div className="todo-list-container">
             {todosList.length > 0 ? (
@@ -12,6 +21,12 @@ const TodoListContainer = ({ todosList, setTodosList }) => {
                             todo={todo}
                             todosList={todosList}
                             setTodosList={setTodosList}
+                            editingState={editingState}
+                            setEditingState={setEditingState}
+                            setTitle={setTitle}
+                            setDescription={setDescription}
+                            setDate={setDate}
+                            setIsDone={setIsDone}
                         />
                     );
                 })

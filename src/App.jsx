@@ -26,17 +26,51 @@ function App() {
 
     const [todosList, setTodosList] = useState(testData);
 
+    // const [editingTodo, setEditingTodo] = useState(null);
+    const [editingState, setEditingState] = useState(false);
+
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState("");
+    const [is_done, setIsDone] = useState(false);
+
     return (
         <div className="wrapper">
             <header>
                 <h1 className="app-title">To Do App</h1>
-                <AddNewTodo />
+                <AddNewTodo
+                    editingState={editingState}
+                    setEditingState={setEditingState}
+                    setTitle={setTitle}
+                    setDescription={setDescription}
+                    setDate={setDate}
+                    setIsDone={setIsDone}
+                />
             </header>
             <section>
-                <TodoInput />
+                {editingState && (
+                    <TodoInput
+                        todosList={todosList}
+                        setTodosList={setTodosList}
+                        title={title}
+                        setTitle={setTitle}
+                        description={description}
+                        setDescription={setDescription}
+                        date={date}
+                        setDate={setDate}
+                        setEditingState={setEditingState}
+                    />
+                )}
+
                 <TodoListContainer
                     todosList={todosList}
                     setTodosList={setTodosList}
+                    editingState={editingState}
+                    setEditingState={setEditingState}
+                    setTitle={setTitle}
+                    setDescription={setDescription}
+                    setDate={setDate}
+                    setIsDone={setIsDone}
                 />
             </section>
         </div>
