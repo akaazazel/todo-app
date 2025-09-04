@@ -1,56 +1,76 @@
 import React from "react";
+import { useState } from "react";
 import { addTodo, Todo } from "../todo_function";
 
 const TaskInput = ({ tasksList, setTasksList, setInputBoxHidden }) => {
-    const manageSubmit = (e) => {
-        e.preventDefault();
-        console.log(e);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [date_created, setDateCreated] = useState("");
+    const [is_done, setIsDone] = useState(false);
 
-        const title = e.target[0].value;
-        const description = e.target[1].value;
-        const date_created =
-            e.target[2].value === "" ? new Date() : new Date(e.target[2].value);
-        const is_done = e.target[3].checked;
-
+    const manageSubmit = () => {
         if (title === "") {
-            alert("Enter a title");
+            alert("Please enter a title");
             return;
         }
 
-        // create todo object with the info user provided
         const newTodo = new Todo({
             title: title,
             description: description,
-            date_created: date_created,
+            date_created:
+                date_created === "" ? new Date() : new Date(date_created),
             is_done: is_done,
         });
+
+        console.log(newTodo);
+
         setTasksList(addTodo(tasksList, newTodo));
         setInputBoxHidden(true);
-        clearInputFields(e);
     };
 
-    const clearInputFields = (e) => {
-        console.log(e);
-        e.target[0].value = "";
-        e.target[1].value = "";
-        e.target[2].value = "";
-        e.target[3].value = "";
+    const clearInputFields = () => {
+        setTitle("");
+        setDescription("");
+        setDateCreated("");
+        setIsDone(false);
     };
 
     return (
         <div className="todo-input-box">
-            <form className="add-task-form" onSubmit={(e) => manageSubmit(e)}>
-                <input type="text" placeholder="title" id="todo-title" />
-                <input
-                    type="text"
-                    placeholder="description"
-                    id="todo-description"
-                />
-                <input type="date" placeholder="date" id="todo-date" />
-                <input type="checkbox" name="is-done" id="todo-is-done" />
-                <button type="reset">Clear</button>
-                <button type="submit">Add</button>
-            </form>
+            <input
+                type="text"
+                placeholder="title"
+                id="todo-title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="description"
+                id="todo-description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
+            <input
+                type="date"
+                placeholder="date"
+                id="todo-date"
+                value={date_created}
+                onChange={(e) => setDateCreated(e.target.value)}
+            />
+            <input
+                type="checkbox"
+                name="is-done"
+                id="todo-is-done"
+                value={is_done}
+                onChange={(e) => setIsDone(e.target.checked)}
+            />
+            <button className="reset" type="button" onClick={clearInputFields}>
+                Clear
+            </button>
+            <button className="submit" type="button" onClick={manageSubmit}>
+                Add
+            </button>
         </div>
     );
 };
