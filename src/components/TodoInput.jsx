@@ -13,6 +13,7 @@ const TodoInput = ({
     setDate,
     editingState,
     setEditingState,
+    clearFields,
 }) => {
     const handleDateFormat = () => {
         return new Date(date);
@@ -73,7 +74,7 @@ const TodoInput = ({
                 <button onClick={() => handleAddingNewTodo()}>
                     {editingState === 2 ? "Save" : "Add"}
                 </button>
-                <button>Clear</button>
+                <button onClick={() => clearFields()}>Clear</button>
             </div>
         </div>
     );

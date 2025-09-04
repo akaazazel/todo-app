@@ -3,17 +3,14 @@ import React from "react";
 function AddNewTodo({
     editingState,
     setEditingState,
-    setTitle,
-    setDescription,
-    setDate,
-    setIsDone,
+    clearFields,
 }) {
-    const clearFields = () => {
-        setTitle("");
-        setDescription("");
-        setDate("");
-        setIsDone(false);
-    };
+    // const clearFields = () => {
+    //     setTitle("");
+    //     setDescription("");
+    //     setDate("");
+    //     setIsDone(false);
+    // };
 
     const handleButtonClick = () => {
         setEditingState(!editingState ? 1 : false);

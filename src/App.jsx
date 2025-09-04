@@ -34,6 +34,13 @@ function App() {
     const [date, setDate] = useState("");
     const [is_done, setIsDone] = useState(false);
 
+    const clearFields = () => {
+        setTitle("");
+        setDescription("");
+        setDate("");
+        setIsDone(false);
+    };
+
     return (
         <div className="wrapper">
             <header>
@@ -41,10 +48,7 @@ function App() {
                 <AddNewTodo
                     editingState={editingState}
                     setEditingState={setEditingState}
-                    setTitle={setTitle}
-                    setDescription={setDescription}
-                    setDate={setDate}
-                    setIsDone={setIsDone}
+                    clearFields={clearFields}
                 />
             </header>
             <section>
@@ -61,6 +65,7 @@ function App() {
                         setDate={setDate}
                         editingState={editingState}
                         setEditingState={setEditingState}
+                        clearFields={clearFields}
                     />
                 )}
 
