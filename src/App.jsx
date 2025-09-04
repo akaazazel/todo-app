@@ -51,7 +51,7 @@ function App() {
                     clearFields={clearFields}
                 />
             </header>
-            <section>
+            <section className="todo-list-section">
                 {editingState && (
                     <TodoInput
                         todosList={todosList}

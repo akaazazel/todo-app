@@ -25,6 +25,8 @@ const TodoInput = ({
             return;
         }
 
+        //* 1: Adding; 2: Editing
+
         if (editingState === 1) {
             const newTodo = new Todo({
                 title: title,
@@ -51,30 +53,44 @@ const TodoInput = ({
 
     return (
         <div className="todo-input-box">
+            <h2 className="heading">
+                {editingState === 2 ? "Edit" : "New"} Todo
+            </h2>
             <div className="input-fields">
                 <input
                     type="text"
-                    placeholder="title"
+                    placeholder="Task Title"
                     value={title}
+                    id="title-input"
                     onChange={(e) => setTitle(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
                 />
                 <input
                     type="date"
                     value={date}
+                    id="date-input"
                     onChange={(e) => setDate(e.target.value)}
                 />
+                <textarea
+                    type="text"
+                    placeholder="Task Description"
+                    value={description}
+                    id="description-input"
+                    onChange={(e) => setDescription(e.target.value)}
+                />
             </div>
-            <div className="action-buttons">
-                <button onClick={() => handleAddingNewTodo()}>
+            <div className="input-action-buttons">
+                <button
+                    className="add-todo-button"
+                    onClick={() => handleAddingNewTodo()}
+                >
                     {editingState === 2 ? "Save" : "Add"}
                 </button>
-                <button onClick={() => clearFields()}>Clear</button>
+                <button
+                    className="clear-todo-button"
+                    onClick={() => clearFields()}
+                >
+                    Clear
+                </button>
             </div>
         </div>
     );

@@ -35,23 +35,33 @@ const SingleTodo = ({
 
     return (
         <div className="single-todo-box">
-            <input
-                type="checkbox"
-                checked={todo.is_done}
-                onChange={() => handleTodoToggle()}
-            />
-            <div
-                className={
-                    todo.is_done ? "todo-details crossed" : "todo-details"
-                }
-            >
-                <p>{todo.title}</p>
-                <p>{todo.description}</p>
-                <p>{handleDate(todo.date_created)}</p>
+            <div className="todo-details-box">
+                <input
+                    type="checkbox"
+                    id="todo-checkbox"
+                    checked={todo.is_done}
+                    onChange={() => handleTodoToggle()}
+                />
+                <div
+                    className={
+                        todo.is_done ? "todo-details crossed" : "todo-details"
+                    }
+                >
+                    <p>{todo.title}</p>
+                    <p>{todo.description}</p>
+                    <p>{handleDate(todo.date_created)}</p>
+                </div>
             </div>
-            <div className="action-buttons">
-                <button onClick={() => handleEditing()}>Edit</button>
-                <button onClick={() => handleRemove()}>Delete</button>
+            <div className="todo-action-buttons">
+                <button className="edit-button" onClick={() => handleEditing()}>
+                    Edit
+                </button>
+                <button
+                    className="delete-button"
+                    onClick={() => handleRemove()}
+                >
+                    Delete
+                </button>
             </div>
         </div>
     );
