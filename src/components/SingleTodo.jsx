@@ -7,6 +7,7 @@ const SingleTodo = ({
     setTodosList,
     editingState,
     setEditingState,
+    setEditingTodo,
     setTitle,
     setDescription,
     setDate,
@@ -21,7 +22,8 @@ const SingleTodo = ({
     };
 
     const handleEditing = () => {
-        setEditingState(true);
+        setEditingState(2);
+        setEditingTodo(todo);
         setTitle(todo.title);
         setDescription(todo.description);
         setDate(todo.date_created.toISOString().split("T")[0]);

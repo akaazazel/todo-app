@@ -16,7 +16,7 @@ function AddNewTodo({
     };
 
     const handleButtonClick = () => {
-        setEditingState(!editingState);
+        setEditingState(!editingState ? 1 : false);
         clearFields();
     };
 

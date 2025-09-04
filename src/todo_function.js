@@ -32,7 +32,7 @@ export function doneToggle(todoList, todo_id) {
     )))
 }
 
-export function editTodo(todoList, todo_id, newTitle, newDescription, newDate, newIsDone) {
+export function editTodo({ todoList, todo_id, newTitle, newDescription, newDate }) {
     return (
         todoList.map((todo) => (
             todo.todo_id === todo_id ? {
@@ -40,7 +40,6 @@ export function editTodo(todoList, todo_id, newTitle, newDescription, newDate, n
                 title: newTitle,
                 description: newDescription,
                 date_created: newDate,
-                is_done: newIsDone
             } : todo
         ))
     )

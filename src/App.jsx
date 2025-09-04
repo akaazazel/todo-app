@@ -26,7 +26,7 @@ function App() {
 
     const [todosList, setTodosList] = useState(testData);
 
-    // const [editingTodo, setEditingTodo] = useState(null);
+    const [editingTodo, setEditingTodo] = useState(null);
     const [editingState, setEditingState] = useState(false);
 
     const [title, setTitle] = useState("");
@@ -51,6 +51,7 @@ function App() {
                 {editingState && (
                     <TodoInput
                         todosList={todosList}
+                        editingTodo={editingTodo}
                         setTodosList={setTodosList}
                         title={title}
                         setTitle={setTitle}
@@ -58,6 +59,7 @@ function App() {
                         setDescription={setDescription}
                         date={date}
                         setDate={setDate}
+                        editingState={editingState}
                         setEditingState={setEditingState}
                     />
                 )}
@@ -67,6 +69,7 @@ function App() {
                     setTodosList={setTodosList}
                     editingState={editingState}
                     setEditingState={setEditingState}
+                    setEditingTodo={setEditingTodo}
                     setTitle={setTitle}
                     setDescription={setDescription}
                     setDate={setDate}

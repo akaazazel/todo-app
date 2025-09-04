@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Todo, addTodo } from "../todo_function";
+import { Todo, addTodo, editTodo } from "../todo_function";
 
 const TodoInput = ({
     todosList,
+    editingTodo = null,
     setTodosList,
     title,
     setTitle,
@@ -10,6 +11,7 @@ const TodoInput = ({
     setDescription,
     date,
     setDate,
+    editingState,
     setEditingState,
 }) => {
     const handleDateFormat = () => {
@@ -22,14 +24,27 @@ const TodoInput = ({
             return;
         }
 
-        const newTodo = new Todo({
-            title: title,
-            description: description,
-            date_created: date === "" ? new Date() : handleDateFormat(),
-            is_done: false,
-        });
+        if (editingState === 1) {
+            const newTodo = new Todo({
+                title: title,
+                description: description,
+                date_created: date === "" ? new Date() : handleDateFormat(),
+                is_done: false,
+            });
 
-        setTodosList(addTodo(todosList, newTodo));
+            setTodosList(addTodo(todosList, newTodo));
+        } else if (editingState === 2) {
+            setTodosList(
+                editTodo({
+                    todoList: todosList,
+                    todo_id: editingTodo.todo_id,
+                    newTitle: title,
+                    newDescription: description,
+                    newDate: date === "" ? new Date() : handleDateFormat(),
+                })
+            );
+        }
+
         setEditingState(false);
     };
 
@@ -55,7 +70,9 @@ const TodoInput = ({
                 />
             </div>
             <div className="action-buttons">
-                <button onClick={() => handleAddingNewTodo()}>Add</button>
+                <button onClick={() => handleAddingNewTodo()}>
+                    {editingState === 2 ? "Save" : "Add"}
+                </button>
                 <button>Clear</button>
             </div>
         </div>

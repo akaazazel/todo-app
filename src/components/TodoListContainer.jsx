@@ -6,6 +6,7 @@ const TodoListContainer = ({
     setTodosList,
     editingState,
     setEditingState,
+    setEditingTodo,
     setTitle,
     setDescription,
     setDate,
@@ -23,6 +24,7 @@ const TodoListContainer = ({
                             setTodosList={setTodosList}
                             editingState={editingState}
                             setEditingState={setEditingState}
+                            setEditingTodo={setEditingTodo}
                             setTitle={setTitle}
                             setDescription={setDescription}
                             setDate={setDate}
