@@ -39,47 +39,6 @@ body {
     letter-spacing: -0.5px;
 }
 
-.task-input {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 25px;
-    width: 100%;
-}
-
-.task-input input {
-    flex: 1;
-    padding: 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 0;
-    font-size: 16px;
-    background: #fff;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.task-input input:focus {
-    border-color: #111;
-    box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.1);
-    outline: none;
-}
-
-.task-input button {
-    padding: 14px 24px;
-    border: 1px solid #111;
-    background: #111;
-    color: white;
-    border-radius: 0;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    transition: background 0.25s ease, color 0.25s ease;
-}
-
-.task-input button:hover {
-    background: #fff;
-    color: #111;
-}
-
 .task-list {
     width: 100%;
 }

@@ -1,20 +1,21 @@
 export class Todo {
-    constructor(title, description, date_created, is_done = false) {
-        this.todo_id = this.randomId()
+    constructor({ todo_id = "", title, description, date_created, is_done = false }) {
+        this.todo_id = todo_id
         this.title = title
         this.description = description
         this.date_created = date_created
         this.is_done = is_done
     }
+}
 
-    randomId() {
-        return Date.now().toString(36) + Math.random().toString(36).substring(2, 10);
-    }
-
+function randomId() {
+    return Date.now().toString(36) + Math.random().toString(36).substring(2, 10);
 }
 
 export function addTodo(todoList, todo) {
-    return [...todoList, todo]
+    const newRandomId = randomId()
+    const todoWithId = { ...todo, todo_id: newRandomId }
+    return [...todoList, todoWithId]
 }
 
 export function removeTodo(todoList, todo_id) {

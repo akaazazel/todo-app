@@ -12,25 +12,43 @@ import {
 
 function App() {
     const [tasksList, setTasksList] = useState([
-        new Todo(
-            "Sample Task",
-            "This is a sample task description",
-            new Date().toLocaleDateString()
-        ),
-        new Todo(
-            "Another Task",
-            "This is another task description",
-            new Date().toLocaleDateString()
-        ),
+        new Todo({
+            todo_id: "mf5adwv45qg24dh1",
+            title: "Wash dishes",
+            description: "This is a wash dishes description",
+            date_created: new Date(),
+            is_done: false,
+        }),
+        new Todo({
+            todo_id: "mf52dwv45qg24dh1",
+            title: "Clean clothes",
+            description: "This is a clean clothes description",
+            date_created: new Date(),
+            is_done: false,
+        }),
     ]);
+
+    const [inputBoxHidden, setInputBoxHidden] = useState(true);
 
     return (
         <div className="wrapper">
             <header>
                 <h1 className="app-title">To Do App</h1>
             </header>
+            <button
+                className="add-new-task"
+                onClick={() => setInputBoxHidden(!inputBoxHidden)}
+            >
+                {inputBoxHidden ? "New Task" : "Cancel"}
+            </button>
             <section>
-                <TaskInput tasksList={tasksList} setTasksList={setTasksList} />
+                {!inputBoxHidden && (
+                    <TaskInput
+                        tasksList={tasksList}
+                        setTasksList={setTasksList}
+                        setInputBoxHidden={setInputBoxHidden}
+                    />
+                )}
                 <TaskList tasksList={tasksList} setTasksList={setTasksList} />
             </section>
         </div>

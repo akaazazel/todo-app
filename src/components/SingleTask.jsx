@@ -10,6 +10,13 @@ const SingleTask = ({ task, tasksList, setTasksList }) => {
         setTasksList(removeTodo(tasksList, task.todo_id));
     };
 
+    const formatDate = (date) => {
+        // const day = date.getDay();
+        // const month = date.getMonth() + 1;
+        // const year = date.getFullYear();
+        return date.toLocaleDateString();
+    };
+
     return (
         <div className="single-task ">
             <div className="task-info">
@@ -21,9 +28,10 @@ const SingleTask = ({ task, tasksList, setTasksList }) => {
                 <div
                     className={task.is_done ? "task-text checked" : "task-text"}
                 >
+                    <p>{task.todo_id}</p>
                     <p>{task.title}</p>
                     <p>{task.description}</p>
-                    <p>{task.date_created}</p>
+                    <p>{formatDate(task.date_created)}</p>
                 </div>
             </div>
             <div className="buttons">

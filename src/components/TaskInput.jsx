@@ -1,38 +1,57 @@
 import React from "react";
+import { addTodo, Todo } from "../todo_function";
 
-const TaskInput = ({ tasksList, setTasksList }) => {
-    const [task, setTask] = React.useState("");
+const TaskInput = ({ tasksList, setTasksList, setInputBoxHidden }) => {
+    const manageSubmit = (e) => {
+        e.preventDefault();
+        console.log(e);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+        const title = e.target[0].value;
+        const description = e.target[1].value;
+        const date_created =
+            e.target[2].value === "" ? new Date() : new Date(e.target[2].value);
+        const is_done = e.target[3].checked;
 
-        if (task === "") {
-            console.error("Enter a task");
-            alert("Task cannot be empty");
+        if (title === "") {
+            alert("Enter a title");
             return;
         }
 
-        const task_class = {
-            id: tasksList.length,
-            task: task,
-            is_completed: false,
-        };
+        // create todo object with the info user provided
+        const newTodo = new Todo({
+            title: title,
+            description: description,
+            date_created: date_created,
+            is_done: is_done,
+        });
+        setTasksList(addTodo(tasksList, newTodo));
+        setInputBoxHidden(true);
+        clearInputFields(e);
+    };
 
-        const new_task_list = [...tasksList, task_class];
-        setTasksList(new_task_list);
-        setTask("");
+    const clearInputFields = (e) => {
+        console.log(e);
+        e.target[0].value = "";
+        e.target[1].value = "";
+        e.target[2].value = "";
+        e.target[3].value = "";
     };
 
     return (
-        <form className="task-input" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Enter task"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-            />
-            <button type="submit">Add</button>
-        </form>
+        <div className="todo-input-box">
+            <form className="add-task-form" onSubmit={(e) => manageSubmit(e)}>
+                <input type="text" placeholder="title" id="todo-title" />
+                <input
+                    type="text"
+                    placeholder="description"
+                    id="todo-description"
+                />
+                <input type="date" placeholder="date" id="todo-date" />
+                <input type="checkbox" name="is-done" id="todo-is-done" />
+                <button type="reset">Clear</button>
+                <button type="submit">Add</button>
+            </form>
+        </div>
     );
 };
 
