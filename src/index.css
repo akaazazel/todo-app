@@ -105,6 +105,12 @@ body {
     background: #f9f9f9;
 }
 
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .single-task input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -126,10 +132,14 @@ body {
     transition: color 0.25s ease;
 }
 
-.single-task button {
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.buttons button {
     padding: 8px 14px;
-    border: 1px solid #e11d48;
-    background: #e11d48;
     color: #fff;
     border-radius: 0;
     cursor: pointer;
@@ -138,12 +148,24 @@ body {
     transition: background 0.25s ease, color 0.25s ease;
 }
 
-.single-task button:hover {
-    background: #fff;
-    color: #e11d48;
+.buttons .delete-button {
+    border: 1px solid #e11d48;
+    background: #e11d48;
+    &:hover {
+        background: #fff;
+        color: #e11d48;
+    }
+}
+.buttons .edit-button {
+    border: 1px solid #1d82e1;
+    background: #1d82e1;
+    &:hover {
+        background: #fff;
+        color: #1d82e1;
+    }
 }
 
-.striked-text {
+.checked p {
     text-decoration: line-through;
     color: #888;
 }

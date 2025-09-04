@@ -8,8 +8,8 @@ const TaskList = ({ tasksList, setTasksList }) => {
                 tasksList.map((task, index) => {
                     return (
                         <SingleTask
-                            task={task}
                             key={index}
+                            task={task}
                             tasksList={tasksList}
                             setTasksList={setTasksList}
                         />

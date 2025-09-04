@@ -1,4 +1,4 @@
-class Todo {
+export class Todo {
     constructor(title, description, date_created, is_done = false) {
         this.todo_id = this.randomId()
         this.title = title
@@ -13,44 +13,51 @@ class Todo {
 
 }
 
-class TodoList {
-    constructor() {
-        this.todos = []
-    }
-
-    addTodo(todo) {
-        this.todos.push(todo)
-    }
-
-    displayTodos() {
-        return this.todos
-    }
-
-    removeTodo(todo_id) {
-        this.todos = this.todos.filter(todo => todo.todo_id !== todo_id)
-    }
-
-    doneToggle(todo_id) {
-        const todo = this.todos.find(todo => todo.todo_id === todo_id)
-        if (todo) {
-            todo.is_done = !todo.is_done
-        }
-    }
-
-    editTodo(todo_id, newTitle, newDescription) {
-        const todo = this.todos.find(todo => todo.todo_id === todo_id)
-        if (todo) {
-            todo.title = newTitle
-            todo.description = newDescription
-        }
-    }
+export function addTodo(todoList, todo) {
+    return [...todoList, todo]
 }
 
-export default { Todo, TodoList }
+export function removeTodo(todoList, todo_id) {
+    const newTodoList = todoList.filter(todo => todo.todo_id !== todo_id)
+    return newTodoList
+}
 
-// const todoList = new TodoList()
-// todoList.addTodo(new Todo("Sample Todo", "This is a sample todo item", new Date().toLocaleDateString()))
-// todoList.addTodo(new Todo("Another Todo", "This is another sample todo item", new Date().toLocaleDateString()))
-// console.log(todoList.displayTodos())
-// todoList.doneToggle(todoList.todos[0].todo_id)
-// console.log(todoList.displayTodos())
+export function doneToggle(todoList, todo_id) {
+    return (todoList.map((todo) => (
+        todo.todo_id === todo_id ? {
+            ...todo,
+            is_done: !todo.is_done
+        } : todo
+    )))
+}
+
+export function editTodo(todoList, todo_id, newTitle, newDescription) {
+    return (
+        todoList.map((todo) => (
+            todo.todo_id === todo_id ? {
+                ...todo,
+                title: newTitle,
+                description: newDescription
+            } : todo
+        ))
+    )
+}
+
+
+/**======================
+ **      Testing
+ *========================**/
+// const todoList = []
+// const todo1 = new Todo("Title 1", "Description 1", new Date().toLocaleDateString())
+// const todo2 = new Todo("Title 2", "Description 2", new Date().toLocaleDateString())
+// const todo3 = new Todo("Title 3", "Description 3", new Date().toLocaleDateString())
+// let updatedList = addTodo(todoList, todo1)
+// updatedList = addTodo(updatedList, todo2)
+// updatedList = addTodo(updatedList, todo3)
+// console.log("After adding todos:", updatedList)
+// updatedList = removeTodo(updatedList, todo2.todo_id)
+// console.log("After removing todo 2:", updatedList)
+// updatedList = doneToggle(updatedList, todo1.todo_id)
+// console.log("After toggling done for todo 1:", updatedList)
+// updatedList = editTodo(updatedList, todo3.todo_id, "Updated Title 3", "Updated Description 3")
+// console.log("After editing todo 3:", updatedList)

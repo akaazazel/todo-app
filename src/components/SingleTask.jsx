@@ -1,32 +1,43 @@
 import React from "react";
-import TaskList from "./TaskList";
+import { doneToggle, removeTodo } from "../todo_function";
 
 const SingleTask = ({ task, tasksList, setTasksList }) => {
-    const handleDelete = (task_id) => {
-        const updatedTasksList = tasksList.filter((t) => t.id !== task_id);
-        setTasksList(updatedTasksList);
+    const manageToggle = () => {
+        setTasksList(doneToggle(tasksList, task.todo_id));
     };
 
-    const handleTaskCompletion = (task_id) => {
-        const updatedTasksList = tasksList.map((t) =>
-            t.id === task_id ? { ...t, is_completed: !t.is_completed } : t
-        );
-        setTasksList(updatedTasksList);
+    const manageDelete = () => {
+        setTasksList(removeTodo(tasksList, task.todo_id));
     };
 
     return (
-        <div className="single-task">
-            <input
-                type="checkbox"
-                onChange={() => handleTaskCompletion(task.id)}
-                checked={task.is_completed}
-            />
-            {task.is_completed ? (
-                <p className="striked-text">{task.task}</p>
-            ) : (
-                <p>{task.task}</p>
-            )}
-            <button onClick={() => handleDelete(task.id)}>delete</button>
+        <div className="single-task ">
+            <div className="task-info">
+                <input
+                    type="checkbox"
+                    checked={task.is_done}
+                    onChange={() => manageToggle()}
+                />
+                <div
+                    className={task.is_done ? "task-text checked" : "task-text"}
+                >
+                    <p>{task.title}</p>
+                    <p>{task.description}</p>
+                    <p>{task.date_created}</p>
+                </div>
+            </div>
+            <div className="buttons">
+                {
+                    //todo Implement edit task function
+                }
+                <button className="edit-button">Edit</button>
+                <button
+                    className="delete-button"
+                    onClick={() => manageDelete()}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     );
 };
