@@ -1,10 +1,6 @@
 import React from "react";
 
-function AddNewTodo({
-    editingState,
-    setEditingState,
-    clearFields,
-}) {
+function AddNewTodo({ editingState, setEditingState, clearFields }) {
     // const clearFields = () => {
     //     setTitle("");
     //     setDescription("");
@@ -19,10 +15,10 @@ function AddNewTodo({
 
     return (
         <button
-            className="add-cancel-todo-button"
+            className={editingState ? "hidden" : "add-cancel-todo-button"}
             onClick={() => handleButtonClick()}
         >
-            {editingState ? "Cancel" : "Add"}
+            Add
         </button>
     );
 }

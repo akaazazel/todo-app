@@ -11,6 +11,10 @@ body {
     justify-content: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .wrapper {
     padding: 10px;
     display: flex;
@@ -54,6 +58,16 @@ header {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 10px;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    & button {
+        padding: 5px 10px;
+    }
 }
 
 .input-fields input {

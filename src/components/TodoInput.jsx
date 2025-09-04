@@ -53,9 +53,12 @@ const TodoInput = ({
 
     return (
         <div className="todo-input-box">
-            <h2 className="heading">
-                {editingState === 2 ? "Edit" : "New"} Todo
-            </h2>
+            <div className="input-header">
+                <h2 className="heading">
+                    {editingState === 2 ? "Edit" : "New"} Todo
+                </h2>
+                <button onClick={() => setEditingState(false)}>Cancel</button>
+            </div>
             <div className="input-fields">
                 <input
                     type="text"
