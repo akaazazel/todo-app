@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import TaskInput from "./components/TaskInput";
 import TaskList from "./components/TaskList";
+import AddNewTask from "./components/AddNewTask";
 import {
     addTodo,
     removeTodo,
@@ -34,13 +35,11 @@ function App() {
         <div className="wrapper">
             <header>
                 <h1 className="app-title">To Do App</h1>
+                <AddNewTask
+                    inputBoxHidden={inputBoxHidden}
+                    setInputBoxHidden={setInputBoxHidden}
+                />
             </header>
-            <button
-                className="add-new-task"
-                onClick={() => setInputBoxHidden(!inputBoxHidden)}
-            >
-                {inputBoxHidden ? "New Task" : "Cancel"}
-            </button>
             <section>
                 {!inputBoxHidden && (
                     <TaskInput

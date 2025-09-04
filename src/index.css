@@ -39,6 +39,11 @@ body {
     letter-spacing: -0.5px;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .task-list {
     width: 100%;
 }
@@ -173,5 +178,6 @@ body {
         align-self: flex-end;
         padding: 6px 12px;
         font-size: 13px;
+        
     }
 }
