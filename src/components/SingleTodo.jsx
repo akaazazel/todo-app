@@ -1,5 +1,5 @@
 import React from "react";
-import { doneToggle } from "../todo_function";
+import { doneToggle, removeTodo } from "../todo_function";
 
 const SingleTodo = ({
     todo,
@@ -29,6 +29,10 @@ const SingleTodo = ({
         setDate(todo.date_created.toISOString().split("T")[0]);
     };
 
+    const handleRemove = () => {
+        setTodosList(removeTodo(todosList, todo.todo_id));
+    };
+
     return (
         <div className="single-todo-box">
             <input
@@ -47,7 +51,7 @@ const SingleTodo = ({
             </div>
             <div className="action-buttons">
                 <button onClick={() => handleEditing()}>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => handleRemove()}>Delete</button>
             </div>
         </div>
     );
