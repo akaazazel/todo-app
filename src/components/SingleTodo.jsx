@@ -1,5 +1,4 @@
 import React from "react";
-import { Checkbox } from "@mui/material";
 import { doneToggle, removeTodo } from "../todo_function";
 
 const SingleTodo = ({
