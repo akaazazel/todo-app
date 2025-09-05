@@ -1,4 +1,5 @@
 import React from "react";
+import { Checkbox } from "@mui/material";
 import { doneToggle, removeTodo } from "../todo_function";
 
 const SingleTodo = ({
@@ -34,33 +35,60 @@ const SingleTodo = ({
     };
 
     return (
-        <div className="single-todo-box">
+        <div
+            className={
+                todo.is_done ? "single-todo-box checked" : "single-todo-box"
+            }
+        >
             <div className="todo-details-box">
-                <input
-                    type="checkbox"
-                    id="todo-checkbox"
-                    checked={todo.is_done}
-                    onChange={() => handleTodoToggle()}
-                />
-                <div
+                <div className="title-checkbox">
+                    <div className="checkbox-box">
+                        <input
+                            type="checkbox"
+                            id="todo-checkbox"
+                            checked={todo.is_done}
+                            onChange={() => handleTodoToggle()}
+                        />
+                    </div>
+
+                    <p
+                        className={
+                            todo.is_done ? "crossed todo-title" : "todo-title"
+                        }
+                    >
+                        {todo.title}
+                    </p>
+                </div>
+                <p className="todo-info todo-date">
+                    {handleDate(todo.date_created)}
+                </p>
+                <p
                     className={
-                        todo.is_done ? "todo-details crossed" : "todo-details"
+                        todo.is_done
+                            ? "todo-info todo-description crossed"
+                            : "todo-info todo-description"
                     }
                 >
-                    <p>{todo.title}</p>
-                    <p>{todo.description}</p>
-                    <p>{handleDate(todo.date_created)}</p>
-                </div>
+                    {todo.description}
+                </p>
             </div>
             <div className="todo-action-buttons">
                 <button className="edit-button" onClick={() => handleEditing()}>
-                    Edit
+                    <img
+                        src="./edit.svg"
+                        alt="edit"
+                        className="todo-action-icon edit-icon"
+                    />
                 </button>
                 <button
                     className="delete-button"
                     onClick={() => handleRemove()}
                 >
-                    Delete
+                    <img
+                        src="./delete.svg"
+                        alt="delete"
+                        className="todo-action-icon delete-icon"
+                    />
                 </button>
             </div>
         </div>

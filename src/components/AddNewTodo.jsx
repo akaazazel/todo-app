@@ -15,7 +15,11 @@ function AddNewTodo({ editingState, setEditingState, clearFields }) {
 
     return (
         <button
-            className={editingState ? "hidden" : "add-cancel-todo-button"}
+            className={
+                editingState
+                    ? "hidden add-cancel-todo-button"
+                    : "add-cancel-todo-button"
+            }
             onClick={() => handleButtonClick()}
         >
             Add

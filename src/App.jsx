@@ -44,7 +44,9 @@ function App() {
     return (
         <div className="wrapper">
             <header>
-                <h1 className="app-title">To Do App</h1>
+                <div className="app-logo">
+                    <img src="./logo.svg" alt="logo" />
+                </div>
                 <AddNewTodo
                     editingState={editingState}
                     setEditingState={setEditingState}

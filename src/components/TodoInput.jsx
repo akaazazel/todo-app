@@ -57,7 +57,12 @@ const TodoInput = ({
                 <h2 className="heading">
                     {editingState === 2 ? "Edit" : "New"} Todo
                 </h2>
-                <button onClick={() => setEditingState(false)}>Cancel</button>
+                <button
+                    className="clear-todo-button"
+                    onClick={() => clearFields()}
+                >
+                    <img src="./clear.svg" alt="clear" />
+                </button>
             </div>
             <div className="input-fields">
                 <input
@@ -89,10 +94,10 @@ const TodoInput = ({
                     {editingState === 2 ? "Save" : "Add"}
                 </button>
                 <button
-                    className="clear-todo-button"
-                    onClick={() => clearFields()}
+                    className="cancel-todo-button"
+                    onClick={() => setEditingState(false)}
                 >
-                    Clear
+                    Cancel
                 </button>
             </div>
         </div>
